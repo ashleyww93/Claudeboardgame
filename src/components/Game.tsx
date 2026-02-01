@@ -11,6 +11,7 @@ import {
   cleanup,
 } from '../game/gameLogic';
 import { GameBoard } from './GameBoard';
+import { GameBoard3D } from './GameBoard3D';
 import { RegisterPanel } from './RegisterPanel';
 import { HandPanel } from './HandPanel';
 import { PlayerStatus } from './PlayerStatus';
@@ -30,6 +31,7 @@ export const Game = ({ playerNames }: GameProps) => {
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
   const [executionSpeed, setExecutionSpeed] = useState(1000);
   const [showInstructions, setShowInstructions] = useState(true);
+  const [view3D, setView3D] = useState(false);
   const executionTimerRef = useRef<number | null>(null);
 
   const currentPlayer = gameState.players[currentPlayerIndex];
@@ -202,12 +204,34 @@ export const Game = ({ playerNames }: GameProps) => {
 
         {/* Center - Game board */}
         <div className="center-panel">
-          <GameBoard
-            board={gameState.board}
-            robots={gameState.robots}
-            players={gameState.players}
-            cellSize={50}
-          />
+          <div className="view-toggle">
+            <button
+              className={`view-btn ${!view3D ? 'active' : ''}`}
+              onClick={() => setView3D(false)}
+            >
+              2D View
+            </button>
+            <button
+              className={`view-btn ${view3D ? 'active' : ''}`}
+              onClick={() => setView3D(true)}
+            >
+              3D View
+            </button>
+          </div>
+          {view3D ? (
+            <GameBoard3D
+              board={gameState.board}
+              robots={gameState.robots}
+              players={gameState.players}
+            />
+          ) : (
+            <GameBoard
+              board={gameState.board}
+              robots={gameState.robots}
+              players={gameState.players}
+              cellSize={50}
+            />
+          )}
         </div>
 
         {/* Right panel - Card management */}
