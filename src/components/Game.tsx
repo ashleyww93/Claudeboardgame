@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import type { GameState } from '../game/types';
 import {
   initializeGame,
@@ -28,9 +28,9 @@ export const Game = ({ playerNames }: GameProps) => {
 
   const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
-  const [isExecuting, setIsExecuting] = useState(false);
   const [executionSpeed, setExecutionSpeed] = useState(1000);
   const [showInstructions, setShowInstructions] = useState(true);
+  const executionTimerRef = useRef<number | null>(null);
 
   const currentPlayer = gameState.players[currentPlayerIndex];
 
@@ -76,7 +76,14 @@ export const Game = ({ playerNames }: GameProps) => {
 
   // Execute registers automatically when in execution phase
   useEffect(() => {
-    if (gameState.phase !== 'execution' || isExecuting) return;
+    if (gameState.phase !== 'execution') {
+      // Clear any pending timer when not in execution phase
+      if (executionTimerRef.current) {
+        clearTimeout(executionTimerRef.current);
+        executionTimerRef.current = null;
+      }
+      return;
+    }
 
     if (gameState.currentRegister >= 5) {
       // Execution complete, go to cleanup
@@ -86,24 +93,30 @@ export const Game = ({ playerNames }: GameProps) => {
       return;
     }
 
-    setIsExecuting(true);
-
-    const timer = setTimeout(() => {
+    // Schedule next register execution
+    executionTimerRef.current = window.setTimeout(() => {
       const result = executeRegister(gameState);
       setGameState(result.newState);
-      setIsExecuting(false);
     }, executionSpeed);
 
-    return () => clearTimeout(timer);
-  }, [gameState.phase, gameState.currentRegister, isExecuting, executionSpeed, gameState]);
+    return () => {
+      if (executionTimerRef.current) {
+        clearTimeout(executionTimerRef.current);
+        executionTimerRef.current = null;
+      }
+    };
+  }, [gameState, executionSpeed]);
 
   // Handle new game
   const handleNewGame = useCallback(() => {
+    if (executionTimerRef.current) {
+      clearTimeout(executionTimerRef.current);
+      executionTimerRef.current = null;
+    }
     const newState = initializeGame(playerNames);
     setGameState(dealCards(newState));
     setCurrentPlayerIndex(0);
     setSelectedCardId(null);
-    setIsExecuting(false);
   }, [playerNames]);
 
   return (
