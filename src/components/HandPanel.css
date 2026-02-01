@@ -1,0 +1,22 @@
+.hand-panel {
+  background: #2a2a2a;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.hand-panel h3 {
+  margin: 0 0 12px 0;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.hand-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.no-cards {
+  color: #555;
+  font-style: italic;
+}

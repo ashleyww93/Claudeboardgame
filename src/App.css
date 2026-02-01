@@ -1,0 +1,143 @@
+.start-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.title-container {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.game-title {
+  font-size: 64px;
+  margin: 0;
+  color: #0ff;
+  text-shadow:
+    0 0 10px #0ff,
+    0 0 20px #0ff,
+    0 0 40px #08f;
+  letter-spacing: 8px;
+}
+
+.game-subtitle {
+  font-size: 18px;
+  color: #888;
+  margin-top: 16px;
+}
+
+.start-menu {
+  background: #2a2a2a;
+  padding: 40px;
+  border-radius: 16px;
+  border: 2px solid #444;
+  max-width: 500px;
+  width: 100%;
+}
+
+.player-select {
+  margin-bottom: 24px;
+}
+
+.player-select label {
+  display: block;
+  color: #aaa;
+  margin-bottom: 12px;
+}
+
+.player-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.player-count-btn {
+  flex: 1;
+  padding: 16px;
+  font-size: 24px;
+  background: #333;
+  border: 2px solid #555;
+  color: #888;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.player-count-btn:hover {
+  background: #444;
+  border-color: #666;
+  color: #fff;
+}
+
+.player-count-btn.selected {
+  background: #0a4a4a;
+  border-color: #0ff;
+  color: #0ff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.start-btn {
+  width: 100%;
+  padding: 20px;
+  font-size: 24px;
+  background: linear-gradient(135deg, #0a0 0%, #080 100%);
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 170, 0, 0.3);
+}
+
+.start-btn:hover {
+  background: linear-gradient(135deg, #0c0 0%, #0a0 100%);
+  box-shadow: 0 6px 20px rgba(0, 204, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.game-info {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #444;
+}
+
+.game-info h3 {
+  color: #0ff;
+  margin: 0 0 12px 0;
+}
+
+.game-info h4 {
+  color: #aaa;
+  margin: 16px 0 8px 0;
+}
+
+.game-info p {
+  color: #888;
+  line-height: 1.6;
+}
+
+.game-info ul {
+  color: #888;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.game-info li {
+  margin-bottom: 4px;
+}
+
+.game-info strong {
+  color: #aaa;
+}
+
+.credits {
+  margin-top: 40px;
+  color: #555;
+  font-size: 14px;
+}

@@ -1,0 +1,332 @@
+.game-container {
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #444;
+}
+
+.game-header h1 {
+  margin: 0;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff;
+}
+
+.phase-indicator {
+  font-size: 18px;
+  color: #aaa;
+}
+
+.phase-name {
+  color: #ff0;
+  font-weight: bold;
+}
+
+.register-indicator {
+  color: #f80;
+}
+
+.instructions {
+  position: relative;
+  background: #2a3a4a;
+  border: 1px solid #4a5a6a;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.instructions .close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.instructions h3 {
+  margin: 0 0 12px 0;
+  color: #8cf;
+}
+
+.instructions ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #aaa;
+}
+
+.instructions li {
+  margin-bottom: 4px;
+}
+
+.winner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.winner-message {
+  background: #2a2a2a;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  border: 2px solid #0f0;
+  box-shadow: 0 0 30px #0f0;
+}
+
+.winner-message h2 {
+  color: #0f0;
+  margin: 0 0 20px 0;
+  font-size: 32px;
+}
+
+.winner-message button {
+  padding: 12px 24px;
+  font-size: 18px;
+  background: #0a0;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.game-layout {
+  display: flex;
+  gap: 20px;
+}
+
+.left-panel {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.left-panel h2 {
+  margin: 0 0 12px 0;
+  color: #aaa;
+  font-size: 16px;
+}
+
+.left-panel .player-status {
+  margin-bottom: 12px;
+}
+
+.speed-control {
+  background: #2a2a2a;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.speed-control label {
+  display: block;
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.speed-control input {
+  width: 100%;
+}
+
+.speed-control span {
+  display: block;
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.new-game-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  background: #444;
+  border: 1px solid #666;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.new-game-btn:hover {
+  background: #555;
+}
+
+.center-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.right-panel {
+  width: 340px;
+  flex-shrink: 0;
+}
+
+.current-player-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: #2a2a2a;
+  border: 2px solid;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.player-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.register-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.register-place-btn {
+  flex: 1;
+  padding: 10px;
+  background: #333;
+  border: 2px dashed #555;
+  color: #888;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.register-place-btn:hover:not(:disabled) {
+  background: #444;
+  border-color: #0ff;
+}
+
+.register-place-btn:disabled {
+  cursor: not-allowed;
+}
+
+.register-place-btn.filled {
+  border-style: solid;
+  border-color: #0a0;
+}
+
+.register-place-btn.locked {
+  background: #442;
+  border-color: #664;
+}
+
+.end-turn-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 16px;
+  background: #0a0;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.end-turn-btn:disabled {
+  background: #333;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.end-turn-btn:not(:disabled):hover {
+  background: #0c0;
+}
+
+.execution-panel,
+.cleanup-panel {
+  background: #2a2a2a;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.execution-panel h2,
+.cleanup-panel h2 {
+  margin: 0 0 12px 0;
+  color: #f80;
+}
+
+.execution-register {
+  font-size: 24px;
+  color: #ff0;
+  margin-bottom: 16px;
+}
+
+.execution-cards {
+  text-align: left;
+}
+
+.execution-card-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+}
+
+.cleanup-panel p {
+  color: #888;
+}
+
+.legend {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+}
+
+.legend h3 {
+  margin: 0 0 12px 0;
+  color: #888;
+  font-size: 14px;
+}
+
+.legend-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #888;
+}
+
+.wall-sample {
+  background: #f80;
+  box-shadow: 0 0 5px #f80;
+}

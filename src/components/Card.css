@@ -1,0 +1,80 @@
+.program-card {
+  width: 70px;
+  height: 100px;
+  background: linear-gradient(135deg, #444 0%, #333 100%);
+  border: 2px solid #555;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  user-select: none;
+}
+
+.program-card:hover:not(.disabled) {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-color: #888;
+}
+
+.program-card.selected {
+  border-color: #0ff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.program-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.program-card.small {
+  width: 50px;
+  height: 70px;
+}
+
+.program-card.small .card-symbol {
+  font-size: 16px;
+}
+
+.program-card.small .card-name {
+  font-size: 8px;
+}
+
+.program-card.small .card-priority {
+  font-size: 8px;
+}
+
+.card-move {
+  background: linear-gradient(135deg, #2a5a2a 0%, #1a4a1a 100%);
+  border-color: #3a7a3a;
+}
+
+.card-backup {
+  background: linear-gradient(135deg, #5a2a2a 0%, #4a1a1a 100%);
+  border-color: #7a3a3a;
+}
+
+.card-turn {
+  background: linear-gradient(135deg, #2a2a5a 0%, #1a1a4a 100%);
+  border-color: #3a3a7a;
+}
+
+.card-symbol {
+  font-size: 24px;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.card-name {
+  font-size: 10px;
+  color: #aaa;
+  text-align: center;
+}
+
+.card-priority {
+  font-size: 10px;
+  color: #666;
+  margin-top: 4px;
+}
