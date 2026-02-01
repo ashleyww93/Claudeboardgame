@@ -85,14 +85,6 @@ export const Game = ({ playerNames }: GameProps) => {
       return;
     }
 
-    if (gameState.currentRegister >= 5) {
-      // Execution complete, go to cleanup
-      const newState = cleanup(gameState);
-      setGameState(newState);
-      setCurrentPlayerIndex(0);
-      return;
-    }
-
     // Schedule next register execution
     executionTimerRef.current = window.setTimeout(() => {
       const result = executeRegister(gameState);
@@ -106,6 +98,20 @@ export const Game = ({ playerNames }: GameProps) => {
       }
     };
   }, [gameState, executionSpeed]);
+
+  // Handle cleanup phase - deal new cards and return to programming
+  useEffect(() => {
+    if (gameState.phase !== 'cleanup') return;
+
+    // Small delay to show "Cleanup Phase" message
+    const timer = setTimeout(() => {
+      const newState = cleanup(gameState);
+      setGameState(newState);
+      setCurrentPlayerIndex(0);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [gameState]);
 
   // Handle new game
   const handleNewGame = useCallback(() => {
